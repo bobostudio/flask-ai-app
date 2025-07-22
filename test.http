@@ -1,12 +1,50 @@
-### 接口测试文件
+@hostname = 127.0.0.1
+@port = 5000
+@host = {{hostname}}:{{port}}
 
-GET http://127.0.0.1:5000/ HTTP/1.1
+@apiPrefix = api
 
-###
-POST http://127.0.0.1:5000/api/text/generate HTTP/1.1
+### 文本生成接口
+POST http://{{host}}/{{apiPrefix}}/text/generate HTTP/1.1
 Content-Type: application/json
 
 {
-    "prompt": "你是什么模型?"
+    "prompt": "what is your model?"
 
+}
+
+### 情感分析接口
+POST http://{{host}}/{{apiPrefix}}/text/sentiment HTTP/1.1
+Content-Type: application/json
+
+{
+    "text": "I've been waiting for a HuggingFace course my whole life. It's awesome!"
+}
+
+
+### 文本摘要接口
+POST http://{{host}}/{{apiPrefix}}/text/summarize HTTP/1.1
+Content-Type: application/json
+
+{
+    "text": "Hugging Face is creating a tool that democratizes AI. It is a platform for building, training, and deploying machine learning models. The company has a strong focus on natural language processing and has developed several popular libraries and tools in this field."
+}
+
+
+### 文本翻译接口
+POST http://{{host}}/{{apiPrefix}}/text/translate HTTP/1.1
+Content-Type: application/json
+
+{
+    "text": "Hello, how are you?"
+}
+
+
+### 问答接口
+POST http://{{host}}/{{apiPrefix}}/text/qa HTTP/1.1
+Content-Type: application/json
+
+{
+    "question": "What is Hugging Face?",
+    "context": "Hugging Face is a company that provides tools and libraries for natural language processing. It is known for its Transformers library, which allows users to easily use pre-trained models for various NLP tasks."
 }
